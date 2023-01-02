@@ -285,15 +285,14 @@ const gunter = {
   }
 
   function isInClass(teacher,student) {
-    let studentIndex = school.students.indexOf(student)
-    let teacherIndex = school.teachers.indexOf(teacher)
-    for (let index = 0; index < school.teachers[teacherIndex].classes.length; index++) {
-        if(school.students[studentIndex].grade === school.teachers[teacherIndex].classes[index]){
-            return true
-        }
+    let theStudent = school.students.find((s) => s.name === student)
+    let theTeacher = school.teachers.find((t) => t.name === teacher)
+    if( theStudent === undefined ||  theTeacher === undefined){
+      return false
     }
-    return false
+    return theTeacher.gradeLevels.includes(theStudent.grade)
   }
+  console.log(isInClass('Carol','ob'));
 
   //EX8
   const library = {
